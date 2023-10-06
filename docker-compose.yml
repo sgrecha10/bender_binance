@@ -1,0 +1,18 @@
+version: '3'
+services:
+    bender_binance:
+      container_name: bender_binance
+      build: .
+      command: python /app/src/app.py
+      ports:
+        - "8457:8457"
+      env_file:
+        - .env
+      volumes:
+        - ./src/:/app/src
+      networks:
+        - bendernetwork
+
+networks:
+  bendernetwork:
+    external: true
